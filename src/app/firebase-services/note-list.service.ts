@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { Note } from '../interfaces/note.interface';
-import { Firestore, collection, doc, collectionData } from '@angular/fire/firestore';
+import { Firestore, collection, doc, collectionData, onSnapshot } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
 
@@ -16,22 +16,33 @@ export class NoteListService {
   items;
 
   firestore: Firestore = inject(Firestore);
+  unsubList: import("@angular/fire/firestore").Unsubscribe;
 
-  constructor() { 
-    this.items$ = collectionData(this.getNotesRef());
-    this.items = this.items$.subscribe( (list) => {
+  constructor() {
+    this.unsubList = onSnapshot(this.getNotesRef(), (list) => {
       list.forEach(element => {
         console.log(element);
       });
-    } );
+    });
+
+    this.items$ = collectionData(this.getNotesRef());
+    console.log(this.items$);
+
+    this.items = this.items$.subscribe((list) => {
+      list.forEach(element => {
+        console.log(element);
+      });
+    });
+
+  }
+
+  ngonDestroy() {
+    this.unsubList();
     this.items.unsubscribe()
-   }
-
-  // const itemCollection = collection(this.firestore, 'items');
-
+  }
 
   getNotesRef() {
-    return collection(this.firestore, 'note');
+    return collection(this.firestore, 'notes');
   }
 
   getTrashRef() {

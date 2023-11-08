@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "da-keep": {
+      "hosting": {
+        "DAKeep": [
+          "da-keep"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "da-keep"
+  }
+}

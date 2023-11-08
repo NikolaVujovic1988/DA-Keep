@@ -8,6 +8,9 @@ import { NoteListComponent } from './note-list/note-list.component';
 import { NoteComponent } from './note-list/note/note.component';
 import { FormsModule } from '@angular/forms';
 import { AddNoteDialogComponent } from './add-note-dialog/add-note-dialog.component';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+
 
 @NgModule({
   declarations: [
@@ -21,7 +24,9 @@ import { AddNoteDialogComponent } from './add-note-dialog/add-note-dialog.compon
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    provideFirebaseApp(() => initializeApp({"projectId":"da-keep","appId":"1:758160722416:web:690f13787a0ee0b9af7535","storageBucket":"da-keep.appspot.com","apiKey":"AIzaSyDPQ4Xo_ghKDN-1jU0lDLgHCbKwyUKveAE","authDomain":"da-keep.firebaseapp.com","messagingSenderId":"758160722416"})),
+    provideFirestore(() => getFirestore())
   ],
   providers: [],
   bootstrap: [AppComponent]

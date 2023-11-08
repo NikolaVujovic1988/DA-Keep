@@ -36,14 +36,14 @@ export class NoteListComponent {
     return [
       {
         id: "21sasd561dd4sdf",
-        type: "note",
+        type: "notes",
         title: "Block, Inline, and Inline-Block",
         content: "https://www.youtube.com/watch?v=x_i2gga-sYg",
         marked: true,
       },
       {
         id: "25sd4f561w54sdf",
-        type: "note",
+        type: "notes",
         title: "css selector",
         content: `kind p > b   (direktes kind) 
         nachfahren p b  (alle nachfahren)
@@ -52,14 +52,14 @@ export class NoteListComponent {
       },
       {
         id: "54a4s6d546ff",
-        type: "note",
+        type: "notes",
         title: "aufräumen",
         content: "Wohnzimmer saugen",
         marked: false,
       },
       {
         id: "2a35s4d654a6s4d",
-        type: "note",
+        type: "notes",
         title: "links",
         content: `Reihenfolge: a:visited 
         a:focus 
